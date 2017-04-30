@@ -1,1 +1,6 @@
 Flask==0.12
+numpy==1.11.3
+tensorflow==0.12.1
+keras==1.2.0
+h5py==2.6.0
+virtualenv==1.11.4
