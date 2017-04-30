@@ -12,24 +12,30 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['SAVE_PATCHES_ON_DISK'] = True
 
 @app.route('/')
 def hello_world():
     return 'Welcome to the classifier'
 
 @app.route('/classify', methods=['GET', 'POST'])
-def upload_patch():
+def classify():
     if request.method == 'POST':
         print(request.headers)
         file = request.files['image_patch']
-        extension = os.path.splitext(file.filename)[1]
-        filename = str(uuid.uuid4()) + extension
-        if file and allowed_file(filename):
-            filename = secure_filename(filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('.classify', image=filename))
+        if file and allowed_file(file.filename):
+            if (app.config['SAVE_PATCHES_ON_DISK']):
+                path = writeFile(file)
+                pic = Image.open(path).convert('L')
+            else:
+                pic = Image.open(file).convert('L')
+            (width, height) = pic.size
+            pixels = list(pic.getdata())
+            pixels = np.array(pixels)
+            pixels = pixels.reshape(height, width)
+            return classifier.classify_img(pixels)
         else:
-            return 'no file attached'
+            return 'Unsupported filetype'
     return '''
     <!doctype html>
     <title>Upload new File</title>
@@ -40,14 +46,13 @@ def upload_patch():
     </form>
     '''
 
-@app.route('/classify/<image>')
-def classify(image):
-    pic = Image.open(app.config['UPLOAD_FOLDER'] + image).convert('L')
-    (width, height) = pic.size
-    pixels = list(pic.getdata())
-    pixels = np.array(pixels)
-    pixels = pixels.reshape(height, width)
-    return classifier.classify_img(pixels)
+def writeFile(file):
+    extension = os.path.splitext(file.filename)[1]
+    filename = str(uuid.uuid4()) + extension
+    filename = secure_filename(filename)
+    path = app.config['UPLOAD_FOLDER'] + filename
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    return path
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
