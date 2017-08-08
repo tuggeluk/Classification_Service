@@ -12,7 +12,7 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['SAVE_PATCHES_ON_DISK'] = True
+app.config['SAVE_PATCHES_ON_DISK'] = False
 
 @app.route('/')
 def hello_world():
