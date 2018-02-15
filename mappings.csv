@@ -1,0 +1,208 @@
+Number,Symbol ID,Symbol Description,Init_name,Direct Mapped,
+0,none,No valid symbol,-1,0,
+1,brace,Brace,Unknown_SystemStartBrace_,1,1
+2,bracketTop,Bracket top,-1,0,
+3,bracketBottom,Bracket bottom,-1,0,
+4,legerLine,Leger line,-1,0,
+5,barlineSingle,Single barline,-1,0,
+6,barlineDouble,Double barline,-1,0,
+7,barlineFinal,Final barline,-1,0,
+8,barlineReverseFinal,Reverse final barline,-1,0,
+9,barlineHeavy,Heavy barline,-1,0,
+10,barlineHeavyHeavy,Heavy double barline,-1,0,
+11,barlineDashed,Dashed barline,-1,0,
+12,barlineDotted,Dotted barline,-1,0,
+13,repeatLeft,Left (start) repeat sign,-1,0,
+14,repeatRight,Right (end) repeat sign,-1,0,
+15,repeatRightLeft,Right and left repeat sign,-1,0,
+16,repeatDots,Repeat dots,-1,0,
+17,repeatDot,Repeat dot,BarLine_,2,2
+18,dalSegno,Dal segno (D.S.),-1,0,
+19,daCapo,Da capo (D.C.),-1,0,
+20,segno,Segno,RehearsalMark_scripts.segno,1,3
+21,coda,Coda,RehearsalMark_scripts.coda,1,4
+22,codaSquare,Square coda,-1,0,
+23,gClef,G clef,Clef_trebleclefs.G,1,5
+24,gClef8vb,G clef ottava bassa,-1,0,
+25,gClef8va,G clef ottava alta,-1,0,
+26,gClef15mb,G clef quindicesima bassa,-1,0,
+27,gClef15ma,G clef quindicesima alta,-1,0,
+28,cClefAlto,C clef alto,Clef_altoclefs.C,1,6
+29,cClefTenor,C clef tenor,Clef_tenorclefs.C,1,7
+30,fClef,F clef,Clef_bassclefs.F,1,8
+31,fClef8vb,F clef ottava bassa,-1,0,
+32,fClef8va,F clef ottava alta,-1,0,
+33,fClef15mb,F clef quindicesima bassa,-1,0,
+34,fClef15ma,F clef quindicesima alta,-1,0,
+35,unpitchedPercussionClef1,Unpitched percussion clef 1,percussion,1,9
+36,gClefChange,G clef change,Clef_trebleclefs.G_change,1,10
+37,cClefAltoChange,C clef alto change,Clef_altoclefs.C_change,1,11
+38,cClefTenorChange,C clef tenor change,Clef_tenorclefs.C_change,1,12
+39,fClefChange,F clef change,Clef_bassclefs.F_change,1,13
+40,clef8,8 for clefs,ClefModifier_8,2,14
+41,clef15,15 for clefs,ClefModifier_15,2,15
+42,timeSig0,Time signature 0,TimeSignature_ ,2,16
+43,timeSig1,Time signature 1,TimeSignature_ ,2,17
+44,timeSig2,Time signature 2,TimeSignature_ ,2,18
+45,timeSig3,Time signature 3,TimeSignature_ ,2,19
+46,timeSig4,Time signature 4,TimeSignature_ ,2,20
+47,timeSig5,Time signature 5,TimeSignature_ ,2,21
+48,timeSig6,Time signature 6,TimeSignature_ ,2,22
+49,timeSig7,Time signature 7,TimeSignature_ ,2,23
+50,timeSig8,Time signature 8,TimeSignature_ ,2,24
+51,timeSig9,Time signature 9,TimeSignature_ ,2,25
+52,timeSig12,Time signature 12,TimeSignature_ ,2,26
+53,timeSig16,Time signature 16,TimeSignature_ ,2,27
+54,timeSigCommon,Common time,TimeSignature_ ,2,28
+55,timeSigCutCommon,Cut time,TimeSignature_ ,2,29
+56,timeSig2over4,2/4 time signature,-1,0,
+57,timeSig2over2,2/2 time signature,-1,0,
+58,timeSig3over2,3/2 time signature,-1,0,
+59,timeSig3over4,3/4 time signature,-1,0,
+60,timeSig3over8,3/8 time signature,-1,0,
+61,timeSig4over4,4/4 time signature,-1,0,
+62,timeSig5over4,5/4 time signature,-1,0,
+63,timeSig5over8,5/8 time signature,-1,0,
+64,timeSig6over4,6/4 time signature,-1,0,
+65,timeSig6over8,6/8 time signature,-1,0,
+66,timeSig7over8,7/8 time signature,-1,0,
+67,timeSig9over8,9/8 time signature,-1,0,
+68,timeSig12over8,12/8 time signature,-1,0,
+69,noteheadBlack,Black notehead,NoteHead_,2,30
+70,noteheadBlackSmall,Black notehead (small staff),NoteHead_,2,31
+71,noteheadHalf,Half (minim) notehead,NoteHead_,2,32
+72,noteheadHalfSmall,Half (minim) notehead (small staff),NoteHead_,2,33
+73,noteheadWhole,Whole (semibreve) notehead,NoteHead_,2,34
+74,noteheadWholeSmall,Whole notehead (small staff),NoteHead_,2,35
+75,noteheadDoubleWhole,Double whole (breve) notehead,NoteHead_,2,36
+76,noteheadDoubleWholeSmall,Double whole note (breve) (small staff),NoteHead_,2,37
+77,noteheadXBlack,X notehead black,-1,0,
+78,noteheadXHalf,X notehead half,-1,0,
+79,noteheadXWhole,X notehead whole,-1,0,
+80,augmentationDot,Augmentation dot,Dots_,2,38
+81,stem,Combining stem,-1,0,
+82,tremolo1,Combining tremolo 1,-1,0,
+83,tremolo2,Combining tremolo 2,-1,0,
+84,tremolo3,Combining tremolo 3,-1,0,
+85,tremolo4,Combining tremolo 4,-1,0,
+86,tremolo5,Combining tremolo 5,-1,0,
+87,flag8thUp,Combining flag 1 (8th) above,Flag_flags.u3,2,39
+88,flag8thUpSmall,Combining flag 1 (8th) above (small staff),Flag_flags.u3,2,40
+89,flag16thUp,Combining flag 2 (16th) above,Flag_flags.u4,1,41
+90,flag32ndUp,Combining flag 3 (32nd) above,Flag_flags.u5,1,42
+91,flag64thUp,Combining flag 4 (64th) above,Flag_flags.u6,1,43
+92,flag128thUp,Combining flag 5 (128th) above,Flag_flags.u7,1,44
+93,flag256thUp,Combining flag 6 (256th) above,-1,0,
+94,flag512thUp,Combining flag 7 (512th) above,-1,0,
+95,flag1024thUp,Combining flag 8 (1024th) above,-1,0,
+96,flag8thDown,Combining flag 1 (8th) below,Flag_flags.d3,2,45
+97,flag8thDownSmall,Combining flag 1 (8th) below (small staff),Flag_flags.d3,2,46
+98,flag16thDown,Combining flag 2 (16th) below,Flag_flags.d4,1,47
+99,flag32ndDown,Combining flag 3 (32nd) below,Flag_flags.d5,1,48
+100,flag64thDown,Combining flag 4 (64th) below,Flag_flags.d6,1,49
+101,flag128thDown,Combining flag 5 (128th) below,Flag_flags.d7,1,50
+102,flag256thDown,Combining flag 6 (256th) below,-1,0,
+103,flag512thDown,Combining flag 7 (512th) below,-1,0,
+104,flag1024thDown,Combining flag 8 (1024th) below,-1,0,
+105,accidentalFlat,Flat,Accidental_-1/2,2,51
+106,accidentalFlatSmall,Flat (for small staves),Accidental_-1/2,2,52
+107,accidentalNatural,Natural,Accidental_0,2,53
+108,accidentalNaturalSmall,Natural (for small staves),Accidental_0,2,54
+109,accidentalSharp,Sharp,Accidental_1/2,2,55
+110,accidentalSharpSmall,Sharp (for small staves),Accidental_1/2,2,56
+111,accidentalDoubleSharp,Double sharp,Accidental_1,2,57
+112,accidentalDoubleFlat,Double flat,Accidental_-1,2,58
+113,keyFlat,Flat in key signature,KeySignature,2,59
+114,keyNatural,Natural in key signature,KeyCancellation,2,60
+115,keySharp,Sharp in key signature,KeySignature,2,61
+116,articAccentAbove,Accent above,Script_1accent,1,62
+117,articAccentBelow,Accent below,Script_-1accent,1,63
+118,articStaccatoAbove,Staccato above,Script_1staccato,1,64
+119,articStaccatoBelow,Staccato below,Script_-1staccato,1,65
+120,articTenutoAbove,Tenuto above,Script_1tenuto,1,66
+121,articTenutoBelow,Tenuto below,Script_-1tenuto,1,67
+122,articStaccatissimoAbove,Staccatissimo above,Script_1staccatissimo,1,68
+123,articStaccatissimoBelow,Staccatissimo below,Script_-1staccatissimo,1,69
+124,articMarcatoAbove,Marcato above,Script_1marcato,1,70
+125,articMarcatoBelow,Marcato below,Script_-1marcato,1,71
+126,articTenutoStaccatoAbove,Louré (tenuto-staccato) above,-1,0,
+127,articTenutoStaccatoBelow,Louré (tenuto-staccato) below,-1,0,
+128,fermataAbove,Fermata above staff,Script_1fermata,1,72
+129,fermataBelow,Fermata below staff,Script_-1fermata,1,73
+130,breathMarkComma,Breath mark (comma),-1,0,
+131,caesura,Caesura,Unknown_BreathingSign_,1,74
+132,restMaxima,Maxima rest,Rest_,2,75
+133,restLonga,Longa rest,Rest_,2,76
+134,restDoubleWhole,Double whole (breve) rest,Rest_,2,77
+135,restWhole,Whole (semibreve) rest,Rest_,2,78
+136,restHalf,Half (minim) rest,Rest_,2,79
+137,restQuarter,Quarter (crotchet) rest,Rest_,2,80
+138,rest8th,Eighth (quaver) rest,Rest_,2,81
+139,rest16th,16th (semiquaver) rest,Rest_,2,82
+140,rest32nd,32nd (demisemiquaver) rest,Rest_,2,83
+141,rest64th,64th (hemidemisemiquaver) rest,Rest_,2,84
+142,rest128th,128th (semihemidemisemiquaver) rest,Rest_,2,85
+143,rest256th,256th rest,-1,0,
+144,rest512th,512th rest,-1,0,
+145,rest1024th,1024th rest,-1,0,
+146,restHBar,Multiple measure rest,Unknown_MultiMeasureRestNumber_,2,86
+147,ottavaAlta,Ottava alta (8va),-1,0,
+148,ottavaBassaVb,Ottava bassa (8vb),-1,0,
+149,dynamicPiano,Piano (p),DynamicText_p,1,87
+150,dynamicMezzo,Mezzo (m),DynamicText_m,1,88
+151,dynamicForte,Forte (f),DynamicText_f,1,89
+152,dynamicRinforzando,Rinforzando (r),-1,0,
+153,dynamicSforzando,Sforzando (s),-1,0,
+154,dynamicZ,Z,-1,0,
+155,dynamicNiente,Niente (n),-1,0,
+156,dynamicPPPPPP,pppppp,-1,0,
+157,dynamicPPPPP,ppppp,DynamicText_ppppp,1,90
+158,dynamicPPPP,pppp,DynamicText_pppp,1,91
+159,dynamicPPP,ppp,DynamicText_ppp,1,92
+160,dynamicPP,pp,DynamicText_pp,1,93
+161,dynamicMP,mp,DynamicText_mp,1,94
+162,dynamicMF,mf,DynamicText_mf,1,95
+163,dynamicPF,pf,-1,0,
+164,dynamicFF,ff,DynamicText_ff,1,96
+165,dynamicFFF,fff,DynamicText_fff,1,97
+166,dynamicFFFF,ffff,DynamicText_ffff,1,98
+167,dynamicFFFFF,fffff,DynamicText_fffff,1,99
+168,dynamicFFFFFF,ffffff,-1,0,
+169,dynamicFortePiano,Forte-piano (fp),DynamicText_fp,1,100
+170,dynamicForzando,Forzando (fz),-1,0,
+171,dynamicSforzando1,Sforzando 1 (sf),DynamicText_sf,1,101
+172,dynamicSforzandoPiano,Sforzando-piano (sfp),-1,0,
+173,dynamicSforzandoPianissimo,Sforzando-pianissimo (sfpp),-1,0,
+174,dynamicSforzato,Sforzato (sfz),DynamicText_sfz,1,102
+175,dynamicSforzatoPiano,Sforzato-piano (sfzp),-1,0,
+176,dynamicSforzatoFF,Sforzatissimo (sffz),-1,0,
+177,dynamicRinforzando1,Rinforzando 1 (rf),-1,0,
+178,dynamicRinforzando2,Rinforzando 2 (rfz),DynamicText_rfz,1,103
+179,graceNoteAcciaccaturaStemUp,Slashed grace note stem up,Flag_flags.u3,2,104
+180,graceNoteAppoggiaturaStemUp,Grace note stem up,Flag_flags.u3,2,105
+181,graceNoteAcciaccaturaStemDown,Slashed grace note stem down,Flag_flags.u3,2,106
+182,graceNoteAppoggiaturaStemDown,Grace note stem down,Flag_flags.u3,2,107
+181,ornamentTrill,Trill,Script_1trill,1,108
+182,ornamentTurn,Turn,Script_1turn,1,109
+183,ornamentTurnInverted,Inverted turn,Script_1reverseturn,1,110
+184,ornamentTurnSlash,Turn with slash,-1,0,
+185,ornamentTurnUp,Turn up,-1,0,
+186,ornamentMordent,Mordent,Script_1mordent,1,111
+187,ornamentMordentInverted,Inverted mordent,-1,0,
+188,stringsDownBow,Down bow,Script_1downbow,1,112
+189,stringsUpBow,Up bow,Script_1upbow,1,113
+190,arpeggiato,Arpeggiato,Arpeggio_,1,114
+191,keyboardPedalPed,Pedal mark,SustainPedal_Ped.,1,115
+192,keyboardPedalUp,Pedal up mark,SustainPedal_*,1,116
+193,tuplet3,Tuplet 3,TupletNumber_3,2,117
+194,tuplet6,Tuplet 6,TupletNumber_6,2,118
+195,fingering0,Fingering 0 (open string),Fingering_0,2,119
+196,fingering1,Fingering 1 (thumb),Fingering_1,2,120
+197,fingering2,Fingering 2 (index finger),Fingering_2,2,121
+198,fingering3,Fingering 3 (middle finger),Fingering_3,2,122
+199,fingering4,Fingering 4 (ring finger),Fingering_4,2,123
+200,fingering5,Fingering 5 (little finger),Fingering_5,2,124
+201,fingeringPLower,Fingering p (pulgar; right-hand thumb,-1,0,
+202,fingeringILower,Fingering i (indicio; right-hand index finger for guitar),-1,0,
+203,fingeringMLower,Fingering m (medio; right-hand middle finger for guitar),-1,0,
+204,fingeringALower,Fingering a (anular; right-hand ring finger for guitar),-1,0,
