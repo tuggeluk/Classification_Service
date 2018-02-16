@@ -2,7 +2,6 @@
 from class_utils.classifier import dws_detector
 import numpy as np
 from flask import Flask, request, redirect, url_for, send_from_directory
-from werkzeug.utils import secure_filename
 from PIL import Image
 import json
 
