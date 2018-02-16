@@ -15,5 +15,5 @@ see: https://github.com/tuggeluk/DeepWatershedDetection
 - `main.py` contains the flask app and calls the detection system located in `class_utils`.
 - `class_utils/` contains the code that loads a pretrained tensorflow model and performs the detection.
 - `demo/` contains a test/demo script for the service.
-- **`important:`** for this service to work you need to create a folder called `trainded_models` and 
+- **`important:`** for this service to work you need to create a folder called `trained_models` and 
 place the correct pretrained models in said folder. 
