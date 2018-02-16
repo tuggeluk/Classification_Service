@@ -3,6 +3,7 @@ from PIL import Image
 import numpy as np
 import cv2
 import json
+from class_utils.classifier import show_image
 
 
 command_url = "http://127.0.0.1:5000/classify"
@@ -20,6 +21,8 @@ with open("tmp.png", 'rb') as f:
     r = requests.post(command_url, files={"image": f})
     print r._content
     bbox_dict = json.loads(r._content)
-    bbox_dict["bounding_boxes"]
+
+    show_image([np.asanyarray(Image.open("tmp.png"))], bbox_dict["bounding_boxes"], True, True)
+
 
 

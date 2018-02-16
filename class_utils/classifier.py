@@ -6,6 +6,7 @@ import pandas as pa
 from models.dwd_net import build_dwd_net
 from class_utils.dws_transform import perform_dws
 import os.path as osp
+from PIL import Image
 
 class dws_detector:
     model_path = "trained_models"

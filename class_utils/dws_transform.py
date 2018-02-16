@@ -1,7 +1,6 @@
 from PIL import Image, ImageDraw
 
-import sys
-import math, random
+import random
 from itertools import product
 from class_utils.ufarray import *
 import numpy as np

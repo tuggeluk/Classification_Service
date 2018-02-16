@@ -16,4 +16,4 @@ see: https://github.com/tuggeluk/DeepWatershedDetection
 - `class_utils/` contains the code that loads a pretrained tensorflow model and performs the detection.
 - `demo/` contains a test/demo script for the service.
 - **`important:`** for this service to work you need to create a folder called `trained_models` and 
-place the correct pretrained models in said folder. 
+place the correct pretrained models in said folder.  (can be found at: https://drive.google.com/open?id=1Knm26FjS6YMrBVU009mRTc19ims1oj6R)
