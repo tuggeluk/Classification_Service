@@ -1,7 +1,7 @@
 import os
 import base64
 import uuid
-from classifier import classifier
+from class_utils import classifier
 import numpy as np
 from flask import Flask, request, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename

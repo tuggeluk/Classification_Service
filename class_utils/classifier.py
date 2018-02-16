@@ -4,8 +4,7 @@ import numpy as np
 import tensorflow as tf
 import pandas as pa
 from models.dwd_net import build_dwd_net
-
-
+from class_utils.dws_transform import perform_dws
 
 class dws_detector:
     model_path = "trained_models"
@@ -43,8 +42,6 @@ class dws_detector:
         saver.restore(sess, self.model_path + "/" + self.model_name)
         self.tf_session = sess
 
-
-
     def classify_img(self, img):
         print("classify")
         if len(img.shape) < 4:
@@ -64,17 +61,50 @@ class dws_detector:
             feed_dict={self.input: canv})
         pred_class = np.argmax(pred_class_logits, axis=3)
 
-        return None
+        dws_list = perform_dws(pred_energy, pred_class, pred_bbox)
 
+        # dws_list, img = perform_dws(pred_energy, pred_class, pred_bbox, return_ccomp_img=True)
+        # from PIL import Image
+        # img.show()
+        # binar_energy = (pred_energy <= 0) * 255
+        # data_img = Image.fromarray(np.squeeze(binar_energy).astype(np.uint8))
+        # data_img.show()
+
+        for element in dws_list:
+            element[4] = self.mapping.iloc[element[4]]["Symbol ID"]
+
+        return dws_list
+
+
+def show_image(data, gt_boxes=None, gt=False, text=False):
+    from PIL import ImageDraw
+    im = Image.fromarray(data[0].astype("uint8"))
+    im.show()
+
+    if gt:
+        draw = ImageDraw.Draw(im)
+        # overlay GT boxes
+        for row in gt_boxes:
+            draw.rectangle(((row[0],row[1]),(row[2],row[3])), fill="red")
+        #im.show()
+    if text:
+        draw = ImageDraw.Draw(im)
+        # overlay GT boxes
+        for row in gt_boxes:
+            draw.text((row[2],row[3]),row[4], fill="red")
+        im.show()
+
+    return
 
 
 if __name__ == '__main__':
     detection = dws_detector()
     from PIL import Image
     import cv2
-    pic = Image.open("demo/lg-9997209-aug-lilyjazz--page-2.png").convert('L')
+    pic = Image.open("demo/lg-9997209-aug-beethoven--page-2.png").convert('L')
     pic = np.asanyarray(pic)
     im = cv2.resize(pic, None, None, fx=0.5, fy=0.5,interpolation=cv2.INTER_LINEAR)
 
-    detection.classify_img(im)
+    bboxes = detection.classify_img(im)
+    show_image([np.asanyarray(im)], bboxes, True, True)
     print("testing mode")
