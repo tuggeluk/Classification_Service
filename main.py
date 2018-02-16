@@ -1,42 +1,39 @@
-import os
-import base64
-import uuid
-from class_utils import classifier
+
+from class_utils.classifier import dws_detector
 import numpy as np
 from flask import Flask, request, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename
 from PIL import Image
+import json
+
 
 UPLOAD_FOLDER = './Patches/'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['SAVE_PATCHES_ON_DISK'] = True
+detector = dws_detector()
 
 @app.route('/')
 def hello_world():
-    return 'Welcome to the classifier'
+    message = 'Welcome to the classifier'
+    return message
 
 @app.route('/classify', methods=['GET', 'POST'])
 def classify():
     if request.method == 'POST':
         print(request.headers)
-        file = request.files['image_patch']
+        file = request.files['image']
         if file and allowed_file(file.filename):
-            if (app.config['SAVE_PATCHES_ON_DISK']):
-                path = writeFile(file)
-                pic = Image.open(path).convert('L')
-            else:
-                pic = Image.open(file).convert('L')
-            (width, height) = pic.size
-            pixels = list(pic.getdata())
-            pixels = np.array(pixels)
-            pixels = pixels.reshape(height, width)
-            return classifier.classify_img(pixels)
+            pic = Image.open(file).convert('L')
+            pixels = np.asarray(pic)
+            detect_list = detector.classify_img(pixels)
+            detect_dict = dict(bounding_boxes = detect_list)
+            print json.dumps(detect_dict)
+            return json.dumps(detect_dict)
         else:
             return 'Unsupported filetype'
-    return '''
+    return
+    '''
     <!doctype html>
     <title>Upload new File</title>
     <h1>Upload new File</h1>
@@ -46,13 +43,6 @@ def classify():
     </form>
     '''
 
-def writeFile(file):
-    extension = os.path.splitext(file.filename)[1]
-    filename = str(uuid.uuid4()) + extension
-    filename = secure_filename(filename)
-    path = app.config['UPLOAD_FOLDER'] + filename
-    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-    return path
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
@@ -62,3 +52,6 @@ def uploaded_file(filename):
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+if __name__ == '__main__':
+    app.run()

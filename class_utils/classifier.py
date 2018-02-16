@@ -5,15 +5,17 @@ import tensorflow as tf
 import pandas as pa
 from models.dwd_net import build_dwd_net
 from class_utils.dws_transform import perform_dws
+import os.path as osp
 
 class dws_detector:
     model_path = "trained_models"
     model_name = "RefineNet-Res101"
-    mapping_path = "mappings.csv"
+    mapping_name = "mappings.csv"
     seed = 123
     tf_session = None
     mapping = None
     overlap = 20
+    root_dir = osp.abspath(osp.join(osp.dirname(__file__), '..'))
 
     patch_size = [640, 640]
 
@@ -22,7 +24,7 @@ class dws_detector:
         tf.set_random_seed(self.seed)
 
         print('Loading mappings ...')
-        mapping = pa.read_csv(self.mapping_path)
+        mapping = pa.read_csv(self.root_dir + "/" + self.mapping_name)
         mapping = mapping[mapping["Init_name"] != "-1"]
         mapping = mapping.drop(mapping.columns[[0, 2]], axis=1)
 
@@ -39,7 +41,7 @@ class dws_detector:
         saver = tf.train.Saver(max_to_keep=1000)
         sess.run(tf.global_variables_initializer())
         print("Loading weights")
-        saver.restore(sess, self.model_path + "/" + self.model_name)
+        saver.restore(sess, self.root_dir+"/" +self.model_path + "/" + self.model_name)
         self.tf_session = sess
 
     def classify_img(self, img):
