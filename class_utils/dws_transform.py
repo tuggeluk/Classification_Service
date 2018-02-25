@@ -5,6 +5,7 @@ from itertools import product
 from class_utils.ufarray import *
 import numpy as np
 
+
 def perform_dws(dws_energy, class_map, bbox_map, min_size=6, return_ccomp_img = False):
     bbox_list = []
 
@@ -19,20 +20,20 @@ def perform_dws(dws_energy, class_map, bbox_map, min_size=6, return_ccomp_img = 
     labels, out_img = find_connected_comp(np.transpose(binar_energy)) # works with inverted indices
     # invert labels dict
     labels_inv = {}
-    for k, v in labels.iteritems():
+    for k, v in labels.items():
         labels_inv[v] = labels_inv.get(v, [])
         labels_inv[v].append(k)
 
 
     # filter components that are too small
-    for key in labels_inv.keys():
+    for key in list(labels_inv):
         # print(key)
         # print(len(labels_inv[key]))
         if len(labels_inv[key]) < min_size:
             del labels_inv[key]
 
 
-    for key in labels_inv.keys():
+    for key in list(labels_inv):
         # add additional dict structure to each component and convert to numpy array
         labels_inv[key] = dict(pixel_coords=np.asanyarray(labels_inv[key]))
         # use average over all pixel coordinates

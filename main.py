@@ -27,7 +27,7 @@ def classify():
             pixels = np.asarray(pic)
             detect_list = detector.classify_img(pixels)
             detect_dict = dict(bounding_boxes = detect_list)
-            print json.dumps(detect_dict)
+            print(json.dumps(detect_dict))
             return json.dumps(detect_dict)
         else:
             return 'Unsupported filetype'
