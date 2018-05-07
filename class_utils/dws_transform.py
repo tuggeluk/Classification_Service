@@ -13,6 +13,9 @@ def perform_dws(dws_energy, class_map, bbox_map, min_size=6, return_ccomp_img = 
     class_map = np.squeeze(class_map)
     bbox_map = np.squeeze(bbox_map)
 
+    if len(dws_energy.shape) == 3:
+        dws_energy = dws_energy.argmax(-1)-1
+
     # Treshhold and binarize dws energy
     binar_energy = (dws_energy <= 0) * 255
 

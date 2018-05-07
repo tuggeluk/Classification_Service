@@ -35,10 +35,17 @@ class dws_detector:
         # reset index
         self.mapping = mapping.reset_index(drop=True)
 
+        # has to be adjusted according to the training scheme used
+        self.energy_loss = "softmax"
+        self.class_loss = "softmax"
+        self.bbox_loss = "reg"
+
+
         sess = tf.Session()
         print('Loading model')
         self.input = tf.placeholder(tf.float32, shape=[None, None, None, 1])
-        [self.dws_energy, self.class_logits, self.bbox_size], init_fn = build_dwd_net(self.input, model=self.model_name, num_classes=len(self.mapping), pretrained_dir="", substract_mean=False)
+        dws_heads, init_fn = build_dwd_net(self.input, model=self.model_name, num_classes=len(self.mapping), pretrained_dir="", substract_mean=False)
+        [self.dws_energy, self.class_logits, self.bbox_size] = [dws_heads["stamp_energy"][self.energy_loss][-1], dws_heads["stamp_class"][self.class_loss][-1], dws_heads["stamp_bbox"][self.bbox_loss][-1]]
         saver = tf.train.Saver(max_to_keep=1000)
         sess.run(tf.global_variables_initializer())
         print("Loading weights")
@@ -104,7 +111,7 @@ if __name__ == '__main__':
     detection = dws_detector()
     from PIL import Image
     import cv2
-    pic = Image.open("demo/lg-9997209-aug-beethoven--page-2.png").convert('L')
+    pic = Image.open("../demo/lg-9997209-aug-beethoven--page-2.png").convert('L')
     pic = np.asanyarray(pic)
     im = cv2.resize(pic, None, None, fx=0.5, fy=0.5,interpolation=cv2.INTER_LINEAR)
 
