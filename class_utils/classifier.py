@@ -86,7 +86,7 @@ class dws_detector:
         return dws_list
 
 
-def show_image(data, gt_boxes=None, gt=False, text=False):
+def show_image(data, gt_boxes=None, gt=False, text=False, save=False, name=""):
     from PIL import ImageDraw
     im = Image.fromarray(data[0].astype("uint8"))
     im.show()
@@ -95,7 +95,7 @@ def show_image(data, gt_boxes=None, gt=False, text=False):
         draw = ImageDraw.Draw(im)
         # overlay GT boxes
         for row in gt_boxes:
-            draw.rectangle(((row[0],row[1]),(row[2],row[3])), fill="red")
+            draw.rectangle(((row[0],row[1]),(row[2],row[3])), outline="red")
         #im.show()
     if text:
         draw = ImageDraw.Draw(im)
@@ -103,6 +103,10 @@ def show_image(data, gt_boxes=None, gt=False, text=False):
         for row in gt_boxes:
             draw.text((row[2],row[3]),row[4], fill="red")
         im.show()
+
+    if save:
+        im.save(name)
+
 
     return
 
