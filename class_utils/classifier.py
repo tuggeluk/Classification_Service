@@ -9,7 +9,7 @@ import os.path as osp
 from PIL import Image
 
 class dws_detector:
-    model_path = "trained_models"
+    model_path = "trained_models_18_may"
     model_name = "RefineNet-Res101"
     mapping_name = "mappings.csv"
     seed = 123

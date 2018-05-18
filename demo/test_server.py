@@ -31,7 +31,7 @@ for img in dir:
         print(r._content.decode("utf-8"))
         bbox_dict = json.loads(r._content.decode("utf-8"))
 
-        show_image([np.asanyarray(Image.open("tmp.png"))], bbox_dict["bounding_boxes"], True, True,True,"detections_"+img)
+        show_image([np.asanyarray(Image.open("tmp.png"))], bbox_dict["bounding_boxes"], True, True)
 
 
 
