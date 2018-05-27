@@ -20,7 +20,7 @@ for img in dir:
     #resize to interline 10
     pic = Image.open(img).convert('L')
     pic = np.asanyarray(pic)
-    #pic = cv2.resize(pic, None, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_LINEAR)
+    #pic = cv2.resize(pic, None, None, fx=10.0/13.0, fy=10.0/13.0, interpolation=cv2.INTER_LINEAR)
     pic = Image.fromarray(pic)
     pic.save("tmp.png")
 

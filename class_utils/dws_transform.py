@@ -4,9 +4,13 @@ import random
 from itertools import product
 from class_utils.ufarray import *
 import numpy as np
+from bbox_cache import bboxes
 
 
-def perform_dws(dws_energy, class_map, bbox_map, min_size=6, return_ccomp_img = False):
+magic_bbox_multiplyer_x = 2707
+magic_bbox_multiplyer_y = 3828
+
+def perform_dws(dws_energy, class_map, bbox_map, min_size=6, return_ccomp_img = False, interline=10, cached_bboxes=False, mapping = None):
     bbox_list = []
 
     dws_energy = np.squeeze(dws_energy)
@@ -46,14 +50,31 @@ def perform_dws(dws_energy, class_map, bbox_map, min_size=6, return_ccomp_img = 
         # average for box size --> transposed
         labels_inv[key]["bbox_size"] = np.average(bbox_map[labels_inv[key]["pixel_coords"][:, 1], labels_inv[key]["pixel_coords"][:, 0]],0).astype(int)
 
-        # produce bbox element, append to list
-        bbox = []
-        bbox.append(int(np.round(labels_inv[key]["center"][0] - (labels_inv[key]["bbox_size"][1]/2.0), 0)))
-        bbox.append(int(np.round(labels_inv[key]["center"][1] - (labels_inv[key]["bbox_size"][0]/2.0), 0)))
-        bbox.append(int(np.round(labels_inv[key]["center"][0] + (labels_inv[key]["bbox_size"][1]/2.0), 0)))
-        bbox.append(int(np.round(labels_inv[key]["center"][1] + (labels_inv[key]["bbox_size"][0]/2.0), 0)))
-        bbox.append(int(labels_inv[key]["class"]))
-        bbox_list.append(bbox)
+
+        if cached_bboxes:
+            # produce bbox element, append to list
+            cached = bboxes[mapping["Symbol ID"][labels_inv[key]["class"]]]
+
+            size_x = cached[0] * magic_bbox_multiplyer_x / 20.0 * interline / 2
+            size_y = cached[1] * magic_bbox_multiplyer_y / 20.0 * interline / 2
+
+
+            bbox = []
+            bbox.append(int(np.round(labels_inv[key]["center"][0] - (size_x), 0)))
+            bbox.append(int(np.round(labels_inv[key]["center"][1] - (size_y), 0)))
+            bbox.append(int(np.round(labels_inv[key]["center"][0] + (size_x), 0)))
+            bbox.append(int(np.round(labels_inv[key]["center"][1] + (size_y), 0)))
+            bbox.append(int(labels_inv[key]["class"]))
+            bbox_list.append(bbox)
+        else:
+            # produce bbox element, append to list
+            bbox = []
+            bbox.append(int(np.round(labels_inv[key]["center"][0] - (labels_inv[key]["bbox_size"][1]/2.0), 0)))
+            bbox.append(int(np.round(labels_inv[key]["center"][1] - (labels_inv[key]["bbox_size"][0]/2.0), 0)))
+            bbox.append(int(np.round(labels_inv[key]["center"][0] + (labels_inv[key]["bbox_size"][1]/2.0), 0)))
+            bbox.append(int(np.round(labels_inv[key]["center"][1] + (labels_inv[key]["bbox_size"][0]/2.0), 0)))
+            bbox.append(int(labels_inv[key]["class"]))
+            bbox_list.append(bbox)
 
     if return_ccomp_img:
         return bbox_list, out_img

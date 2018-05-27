@@ -12,6 +12,10 @@ class dws_detector:
     model_path = "trained_models_18_may"
     model_name = "RefineNet-Res101"
     mapping_name = "mappings.csv"
+
+    interline = 10
+    cached_bboxes = True
+
     seed = 123
     tf_session = None
     mapping = None
@@ -71,7 +75,7 @@ class dws_detector:
             feed_dict={self.input: canv})
         pred_class = np.argmax(pred_class_logits, axis=3)
 
-        dws_list = perform_dws(pred_energy, pred_class, pred_bbox)
+        dws_list = perform_dws(pred_energy, pred_class, pred_bbox, interline = self.interline, cached_bboxes=self.cached_bboxes, mapping=self.mapping)
 
         # dws_list, img = perform_dws(pred_energy, pred_class, pred_bbox, return_ccomp_img=True)
         # from PIL import Image
