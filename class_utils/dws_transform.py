@@ -76,6 +76,10 @@ def perform_dws(dws_energy, class_map, bbox_map, min_size=6, return_ccomp_img = 
             bbox.append(int(labels_inv[key]["class"]))
             bbox_list.append(bbox)
 
+
+        # add dummy conficence of 1
+        bbox.append(int(1))
+
     if return_ccomp_img:
         return bbox_list, out_img
     return bbox_list
