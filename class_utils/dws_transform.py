@@ -4,7 +4,7 @@ import random
 from itertools import product
 from class_utils.ufarray import *
 import numpy as np
-from bbox_cache import bboxes
+from class_utils.bbox_cache import bboxes
 
 
 magic_bbox_multiplyer_x = 2707
