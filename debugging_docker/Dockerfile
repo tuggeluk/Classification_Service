@@ -28,12 +28,13 @@ ENV PATH /opt/conda/bin:$PATH
 # Then install ML stuff
 RUN pip install opencv-python~=4.2.0 \
     pillow==5.3.0 \
+    pandas \
     tensorflow==1.11 \
     tensorflow-gpu==1.11 \
-    tqdm
+    tqdm \
 
 # Make workdir
 RUN mkdir /workspace
 WORKDIR /workspace
 
-ENTRYPOINT "/bin/bash"
+ENTRYPOINT /bin/bash

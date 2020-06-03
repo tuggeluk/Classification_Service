@@ -47,14 +47,25 @@ class dws_detector:
 
         sess = tf.Session()
         print('Loading model')
-        self.input = tf.placeholder(tf.float32, shape=[None, None, None, 1])
-        dws_heads, init_fn = build_dwd_net(self.input, model=self.model_name, num_classes=len(self.mapping), pretrained_dir="", substract_mean=False)
+        self.input = tf.placeholder(tf.float32, shape=[None, None, None, 1],
+                                    name='image_input')
+        dws_heads, init_fn = build_dwd_net(self.input, model=self.model_name,
+                                           num_classes=len(self.mapping),
+                                           pretrained_dir="",
+                                           substract_mean=False)
         [self.dws_energy, self.class_logits, self.bbox_size] = [dws_heads["stamp_energy"][self.energy_loss][-1], dws_heads["stamp_class"][self.class_loss][-1], dws_heads["stamp_bbox"][self.bbox_loss][-1]]
+
+        # Name the tensors
+
         saver = tf.train.Saver(max_to_keep=1000)
         sess.run(tf.global_variables_initializer())
         print("Loading weights")
         saver.restore(sess, self.root_dir+"/" +self.model_path + "/" + self.model_name)
         self.tf_session = sess
+
+    @staticmethod
+    def add_name_to_tensor(tensor, name):
+        return tf.identity(tensor, name=name)
 
     def classify_img(self, img):
         print("classify")
@@ -111,7 +122,6 @@ def show_image(data, gt_boxes=None, gt=False, text=False, save=False, name=""):
     if save:
         im.save(name)
 
-
     return
 
 
@@ -119,10 +129,11 @@ if __name__ == '__main__':
     detection = dws_detector()
     from PIL import Image
     import cv2
-    pic = Image.open("../demo/lg-9997209-aug-beethoven--page-2.png").convert('L')
+    pic = Image.open("../demo/Bach_Fuge_C_DUR.png").convert('L')
     pic = np.asanyarray(pic)
     im = cv2.resize(pic, None, None, fx=0.5, fy=0.5,interpolation=cv2.INTER_LINEAR)
 
     bboxes = detection.classify_img(im)
-    show_image([np.asanyarray(im)], bboxes, True, True)
+    show_image([np.asanyarray(im)], bboxes, True, True, True,
+               "/root/test_image.png")
     print("testing mode")
