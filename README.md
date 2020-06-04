@@ -43,9 +43,16 @@ sudo service detection-docker start
 sudo service detection-docker enable  # To auto-start the service on reboot
 ```
 
-4. To turn of the service
+4. To check the status of the service
+
+```bash
+service detection-docker status
+```
+
+5. To turn of the service
 
 ```bash
 sudo service detection-docker stop
 sudo service detection-docker disable  # Only if you want to prevent the service from restarting on reboot
 ```
+
