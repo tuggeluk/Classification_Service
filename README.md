@@ -40,7 +40,7 @@ docker create --restart unless-stopped --gpus all -p 5000:5000 --name detection_
 
 ```bash
 sudo service detection-docker start
-sudo service detection-docker enable  # To auto-start the service on reboot
+sudo systemctl enable detection-docker  # To auto-start the service on reboot
 ```
 
 4. To check the status of the service
@@ -53,6 +53,6 @@ service detection-docker status
 
 ```bash
 sudo service detection-docker stop
-sudo service detection-docker disable  # Only if you want to prevent the service from restarting on reboot
+sudo systemctl disable detection-docker  # Only if you want to prevent the service from restarting on reboot
 ```
 
