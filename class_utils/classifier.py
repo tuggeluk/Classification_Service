@@ -129,7 +129,7 @@ if __name__ == '__main__':
     detection = dws_detector()
     from PIL import Image
     import cv2
-    pic = Image.open("/demo/Bach_Fuge_C_DUR.png").convert('L')
+    pic = Image.open("demo/Bach_Fuge_C_DUR.png").convert('L')
     pic = np.asanyarray(pic)
     im = cv2.resize(pic, None, None, fx=0.5, fy=0.5,interpolation=cv2.INTER_LINEAR)
 
