@@ -3,8 +3,8 @@ from __future__ import print_function
 import numpy as np
 import tensorflow as tf
 import pandas as pa
-from models.dwd_net import build_dwd_net
-from class_utils.dws_transform import perform_dws
+from dwd_original.models.dwd_net import build_dwd_net
+from dwd_original.class_utils.dws_transform import perform_dws
 import os.path as osp
 
 

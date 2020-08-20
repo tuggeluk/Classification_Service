@@ -1,12 +1,11 @@
 import requests
 from PIL import Image
 import numpy as np
-import cv2
 import json
 from time import time
 import sys
 sys.path.append('../')
-from class_utils.classifier import show_image
+from dwd_original.class_utils.classifier import show_image
 import os
 
 

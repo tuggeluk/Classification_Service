@@ -1,4 +1,4 @@
-from models.RefineNet import build_refinenet
+from dwd_original.models.RefineNet import build_refinenet
 import tensorflow as tf
 from tensorflow.contrib import slim
 

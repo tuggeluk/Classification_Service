@@ -1,8 +1,9 @@
 import tensorflow as tf
 from tensorflow.contrib import slim
-import models.resnet_v1 as resnet_v1
+from dwd_original import models as resnet_v1
 
-import os, sys
+import os
+
 
 def Upsampling(inputs,scale):
     return tf.image.resize_bilinear(inputs, size=[tf.shape(inputs)[1]*scale,  tf.shape(inputs)[2]*scale])
