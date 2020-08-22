@@ -31,6 +31,8 @@ RUN pip install opencv-python~=4.2.0 \
     pandas \
     tensorflow==1.11 \
     tensorflow-gpu==1.11 \
+    easydict \
+    matplotlib \
     tqdm
 
 # Install flask and copy all files into a location
