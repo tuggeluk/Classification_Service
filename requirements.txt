@@ -3,3 +3,5 @@ tensorflow
 Pillow
 Flask
 opencv-python
+easydict
+matplotlib

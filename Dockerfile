@@ -42,5 +42,4 @@ ENV PYTHONPATH /app
 # Expose Flask port
 EXPOSE 5000
 
-# Set entrypoint and command
-ENTRYPOINT [ "python", "/app/main.py" ]
+
